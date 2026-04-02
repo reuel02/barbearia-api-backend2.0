@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: barbearia_db
+    restart: always
+    environment:
+      POSTGRES_DB: barbearia_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "8081:5432"
+    volumes:
+      - barbearia_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  barbearia_postgres_data:
