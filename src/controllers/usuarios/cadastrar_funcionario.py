@@ -6,6 +6,8 @@ from src.schemas.usuario_schema import UsuarioSchema
 from src.models import Usuario
 from db import db
 
+
+# Controlador de cadastro de barbeiros/funcionarios
 @admin_required()
 def cadastrar_funcionario():
     try:
@@ -20,12 +22,12 @@ def cadastrar_funcionario():
         empresa_id_token = token_decodificado["empresa_id"]
 
         usuario = Usuario(
-            empresa_id = empresa_id_token,
-            nome = dados["nome"],
-            email = dados["email"],
-            senha_hash = senha_hash,
-            role = "STAFF",
-            telefone = dados.get("telefone")
+            empresa_id=empresa_id_token,
+            nome=dados["nome"],
+            email=dados["email"],
+            senha_hash=senha_hash,
+            role="STAFF",
+            telefone=dados.get("telefone"),
         )
 
         db.session.add(usuario)

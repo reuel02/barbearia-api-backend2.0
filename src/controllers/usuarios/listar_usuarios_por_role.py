@@ -4,6 +4,8 @@ from flask import jsonify
 from src.schemas.usuario_schema import UsuarioSchema
 from src.models import Usuario
 
+
+# Controlador de listagem de usuarios por Role = CLIENTE OU ADMIN OU STAFF
 @admin_required()
 def listar_usuarios_por_role(role):
     try:
@@ -13,7 +15,9 @@ def listar_usuarios_por_role(role):
 
         empresa_id_token = token_decodificado["empresa_id"]
 
-        resultado = Usuario.query.filter_by(role=role, empresa_id=empresa_id_token).all()
+        resultado = Usuario.query.filter_by(
+            role=role, empresa_id=empresa_id_token
+        ).all()
 
         dados = schema.dump(resultado)
 

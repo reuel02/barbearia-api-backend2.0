@@ -5,6 +5,8 @@ from flask import request, jsonify
 from db import db
 from flask_jwt_extended import get_jwt
 
+
+# Controlador de cadastro de servicos
 @admin_required()
 def cadastrar_servico():
     try:
@@ -17,10 +19,10 @@ def cadastrar_servico():
         empresa_id_token = token_decodificado["empresa_id"]
 
         servico = Servico(
-            empresa_id = empresa_id_token,
-            nome = dados["nome"],
-            preco = dados["preco"],
-            duracao = dados["duracao"]
+            empresa_id=empresa_id_token,
+            nome=dados["nome"],
+            preco=dados["preco"],
+            duracao=dados["duracao"],
         )
 
         db.session.add(servico)

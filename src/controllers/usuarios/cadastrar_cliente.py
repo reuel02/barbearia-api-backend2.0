@@ -4,6 +4,8 @@ from src.schemas.usuario_schema import UsuarioSchema
 from src.models import Usuario
 from db import db
 
+
+# Controlador de cadastro de clientes
 def cadastrar_cliente(empresa_id):
     try:
         schema = UsuarioSchema()
@@ -13,12 +15,12 @@ def cadastrar_cliente(empresa_id):
         senha_hash = generate_password_hash(dados["senha"])
 
         usuario = Usuario(
-            empresa_id = empresa_id,
-            nome = dados["nome"],
-            email = dados["email"],
-            senha_hash = senha_hash,
-            role = "CLIENTE",
-            telefone = dados.get("telefone")
+            empresa_id=empresa_id,
+            nome=dados["nome"],
+            email=dados["email"],
+            senha_hash=senha_hash,
+            role="CLIENTE",
+            telefone=dados.get("telefone"),
         )
 
         db.session.add(usuario)
@@ -28,5 +30,3 @@ def cadastrar_cliente(empresa_id):
 
     except Exception as e:
         return jsonify({"mensagem": "Erro inesperado no sistema", "erro": str(e)}), 500
-
-    

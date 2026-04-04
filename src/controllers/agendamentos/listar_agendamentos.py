@@ -5,8 +5,8 @@ from src.middlewares.admin_required import admin_required
 from flask import jsonify, request
 from sqlalchemy import func
 
-# O Desafio: Listar todos os agendamentos daquela empresa para montar o "Calendário" do painel do Admin, talvez filtrando pelo dia de hoje.
 
+# Controlador de listagem de agendamentos
 @admin_required()
 def listar_agendamentos():
     try:
@@ -23,8 +23,8 @@ def listar_agendamentos():
         filtro_data = request.args.get("data")
 
         if filtro_status:
-            query = query.filter_by(status=filtro_status) 
-            
+            query = query.filter_by(status=filtro_status)
+
         if filtro_barbeiro:
             query = query.filter_by(barbeiro_id=filtro_barbeiro)
 
@@ -39,6 +39,6 @@ def listar_agendamentos():
         dados = schema.dump(resultado)
 
         return jsonify(dados), 200
-        
+
     except Exception as e:
         return jsonify({"mensagem": "Erro inesperado no sistema", "erro": str(e)}), 500
