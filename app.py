@@ -4,6 +4,7 @@ from db import db
 from flask_migrate import Migrate
 from src.routes.agendamentos_routes import agendamentos_bp
 from src.routes.servicos_routes import servicos_bp
+from src.routes.usuarios_routes import usuarios_bp
 import src.models
 from flask_jwt_extended import JWTManager
 import os
@@ -32,6 +33,8 @@ jwt = JWTManager(app)
 app.register_blueprint(auth_bp, url_prefix="/api/auth")
 app.register_blueprint(agendamentos_bp, url_prefix='/api/agendamentos')
 app.register_blueprint(servicos_bp, url_prefix='/api/servicos')
+app.register_blueprint(usuarios_bp, url_prefix='/api/usuarios')
+
 
 
 # Permite o servidor rodar sem parar

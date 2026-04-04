@@ -6,7 +6,7 @@ from flask import Blueprint
 auth_bp = Blueprint('auth', __name__)
 
 # Rota de cadastro
-auth_bp.route('/cadastro', methods=['POST'])(cadastrar)
+auth_bp.route('/cadastrar', methods=['POST'])(cadastrar)
 
 # Rota de login
 auth_bp.route('/login', methods=['POST'])(login)
