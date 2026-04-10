@@ -1,4 +1,4 @@
-# 💈 Barber SaaS API
+# 💈 BARBERPRO API
 
 Bem-vindo ao repositório do **Barber SaaS API**! 
 Este é um sistema de Back-End robusto construído em Python seguindo o padrão arquitetural **M-V-C (Model-View-Controller)**. Ele foi desenhado para ser uma plataforma **Multi-Tenant** (SaaS), onde múltiplas barbearias podem gerenciar seus serviços, funcionários, clientes e agendamentos com isolamento total de segurança e dados.
