@@ -32,7 +32,8 @@ jobs:
 
     - name: 5. Rodar Testes Automatizados (Pytest)
       # Simulação: Como você talvez não tenha testes ainda, isso evita que quebre por falta de testes
-      run: pytest || echo "Aviso: Sem testes configurados, mas o passo existe!"
+      run: |
+        pytest || echo 'Aviso: Sem testes configurados, mas o passo existe!'
 
     - name: 6. Testar a montagem do Dockerfile
       # A prova de fogo: o Dockerfile que fizemos funciona nessa máquina em branco?
