@@ -24,17 +24,21 @@ jobs:
     - name: 3. Instalar dependências da API
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt black pytest
+        pip install -r requirements.txt black pytest bandit
 
     - name: 4. Validar Formatação do Código (Black)
       # Se o código estiver mal formatado, a esteira quebra aqui
       run: black --check .
 
-    - name: 5. Rodar Testes Automatizados (Pytest)
+    - name: 5. Escanear Vulnerabilidades (Bandit)
+      # Se o código tiver vulnerabilidades de segurança a esteira quebra aqui
+      run: bandit -r .
+
+    - name: 6. Rodar Testes Automatizados (Pytest)
       # Simulação: Como você talvez não tenha testes ainda, isso evita que quebre por falta de testes
       run: |
         pytest || echo 'Aviso: Sem testes configurados, mas o passo existe!'
 
-    - name: 6. Testar a montagem do Dockerfile
+    - name: 7. Testar a montagem do Dockerfile
       # A prova de fogo: o Dockerfile que fizemos funciona nessa máquina em branco?
       run: docker build -t barbearia-api:ci-test .
