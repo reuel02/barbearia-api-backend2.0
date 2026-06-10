@@ -43,8 +43,13 @@ app.register_blueprint(usuarios_bp, url_prefix="/api/usuarios")
 
 # Permite o servidor rodar sem parar
 if __name__ == "__main__":
+    host = os.getenv("HOST", "127.0.0.1")
+    port = int(os.getenv("PORT", 5000))
+    debug_env = os.getenv("FLASK_DEBUG", "false").lower()
+    debug = debug_env in ("1", "true", "yes")
+
     app.run(
-        host="0.0.0.0",
-        port=int(os.getenv("PORT", 5000)),
-        debug=True,
+        host=host,
+        port=port,
+        debug=debug,
     )
