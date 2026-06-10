@@ -17,8 +17,9 @@ app = Flask(__name__)
 CORS(app)
 
 # Configurações do banco de dados
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "postgresql://postgres:postgres@localhost:8081/barbearia_db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:8081/barbearia_db",
 )
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -42,5 +43,8 @@ app.register_blueprint(usuarios_bp, url_prefix="/api/usuarios")
 
 # Permite o servidor rodar sem parar
 if __name__ == "__main__":
-
-    app.run(debug=True)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5000)),
+        debug=True,
+    )
