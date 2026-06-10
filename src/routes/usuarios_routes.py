@@ -18,4 +18,6 @@ usuarios_bp.route("/cadastrar/funcionario", methods=["POST"])(cadastrar_funciona
 # Rota de listagem de usuarios
 usuarios_bp.route("/listar/<role>", methods=["GET"])(listar_usuarios_por_role)
 
-usuarios_bp.route("/listar/barbeiros/<empresa_id>", methods=["GET"])(listar_barbeiros_publica)
+usuarios_bp.route("/listar/barbeiros/<empresa_id>", methods=["GET"])(
+    listar_barbeiros_publica
+)

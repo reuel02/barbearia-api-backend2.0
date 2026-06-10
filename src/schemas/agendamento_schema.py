@@ -3,6 +3,7 @@ from marshmallow import fields
 from src.models.agendamento import Agendamento
 from src.models.usuario import Usuario
 
+
 class AgendamentoSchema(SQLAlchemyAutoSchema):
     cliente_nome = fields.Method("get_cliente_nome")
     barbeiro_nome = fields.Method("get_barbeiro_nome")
